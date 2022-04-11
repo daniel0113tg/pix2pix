@@ -97,6 +97,7 @@ class Pix2Pix():
         d = Conv2D(512, (4,4), padding='same', kernel_initializer=init)(d)
         d = BatchNormalization()(d)
         d = LeakyReLU(alpha=0.2)(d)
+        
         # salida del parche
         d = Conv2D(1, (4,4), padding='same', kernel_initializer=init)(d)
         patch_out = Activation('sigmoid')(d)
