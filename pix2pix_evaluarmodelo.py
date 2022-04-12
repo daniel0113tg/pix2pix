@@ -32,7 +32,7 @@ class Pix2PixEvaluarModelo():
             pyplot.axis('off')
             pyplot.imshow(X_realB[i])
 	    # guardar la trama en un archivo
-        filename1 = 'plot_%d.png' % (step+1)
+        filename1 = 'plot_%06d.png' % (step+1)
         pyplot.savefig(filename1)
         pyplot.close()
  

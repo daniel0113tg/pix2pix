@@ -30,6 +30,7 @@ class Pix2PixEntrenamiento():
         bat_per_epo = int(len(trainA) / n_batch)
 	    # calcula el número de iteraciones de entrenamiento
         n_steps = bat_per_epo * n_epochs
+        print(bat_per_epo)
         print(n_steps)
         # variables para la barra de carga por epoca
         bar_len = 60
