@@ -3,8 +3,6 @@ from os import listdir
 from numpy import asarray
 from numpy import vstack
 import numpy as np
-from keras.preprocessing.image import img_to_array
-from keras.preprocessing.image import load_img
 from numpy import savez_compressed
 # cargar el conjunto de datos preparado
 from numpy import load

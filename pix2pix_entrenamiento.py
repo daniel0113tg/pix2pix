@@ -13,7 +13,7 @@ class Pix2PixEntrenamiento():
 
  
    # entrenar modelos pix2pix
-    def entrenarmodelo(self, d_model, g_model, gan_model, dataset, n_epochs=2, n_batch=1):
+    def entrenarmodelo(self, d_model, g_model, gan_model, dataset, n_epochs=10, n_batch=1):
 	    # determinar la forma cuadrada de salida del discriminador
         d_acc_total_train = []
         d_loss_total_train = []
@@ -49,7 +49,7 @@ class Pix2PixEntrenamiento():
                 # actualizar el generador
                 g_loss, _, _ = gan_model.train_on_batch(X_realA, [Y_real, X_realB])
                 
-                if ((i+1) % 2 == 0):
+                if ((i+1) % 10 == 0):
                     d_loss_val_real, d_acc_val_real = Pix2PixEvaluarModelo().evaluar_acurracy(d_model, g_model, n_batch, n_patch)
                     d_acc_sum_train.append(d_acc_train_real)
                     d_loss_sum_train.append(d_loss_train_real)
@@ -62,13 +62,13 @@ class Pix2PixEntrenamiento():
                 sys.stdout.write('  >Entrenando [%s] %s%s ...%s\r' % (bar, percents, '%', status))
                 sys.stdout.flush()
                 
-            if ((i+1) % 2 == 0):  
+            if ((i+1) % 10 == 0):  
                 d_acc_total_train.append(np.asarray(d_acc_sum_train).sum()/len(d_acc_sum_train))
                 d_loss_total_train.append(np.asarray(d_loss_sum_train).sum()/len(d_loss_sum_train))
                 d_acc_total_val.append(np.asarray(d_acc_sum_val).sum()/len(d_acc_sum_val))
                 d_loss_total_val.append(np.asarray(d_loss_sum_val).sum()/len(d_loss_sum_val))
-                Pix2PixEvaluarModelo().evaluar_performance((i+1), g_model, dataset)
-                Pix2PixEvaluarModelo().guardar_modelo((i+1), g_model)
+                Pix2PixEvaluarModelo().evaluar_performance((i), g_model, dataset)
+                Pix2PixEvaluarModelo().guardar_modelo((i), g_model)
                 self.graficar_accuracy_y_perdida( d_acc_total_train, d_loss_total_train, d_acc_total_val,d_loss_total_val, (i+1))
                 file = open('acc.txt', 'w')
                 for acc in d_acc_total_val:

@@ -32,13 +32,9 @@ class Pix2PixEvaluarModelo():
             pyplot.axis('off')
             pyplot.imshow(X_realB[i])
 	    # guardar la trama en un archivo
-        filename1 = 'plot_%06d.png' % (step+1)
+        filename1 = 'plot_%d.png' % (step+1)
         pyplot.savefig(filename1)
         pyplot.close()
-        # guardar el modelo del generador
-        filename2 = 'model_%06d.h5' % (step+1)
-        g_model.save(filename2)
-        print('>Saved: %s and %s' % (filename1, filename2))
  
     def evaluar_acurracy(self, d_model,  g_model, n_batch, n_patch):
         # Generamos nuevos datos
@@ -56,6 +52,6 @@ class Pix2PixEvaluarModelo():
 
     def guardar_modelo(self, epoch, g_model):
         # guardar el modelo del generador
-        filename2 = 'model_%06d.h5' % (epoch+1)
+        filename2 = 'model_%d.h5' % (epoch+1)
         g_model.save(filename2)
         print('>Saved: %s' % (filename2))
