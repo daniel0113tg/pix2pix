@@ -13,7 +13,7 @@ class Pix2PixEntrenamiento():
 
  
    # entrenar modelos pix2pix
-    def entrenarmodelo(self, d_model, g_model, gan_model, dataset, n_epochs=10, n_batch=1):
+    def entrenarmodelo(self, d_model, g_model, gan_model, dataset, n_epochs=100, n_batch=1):
 	    # determinar la forma cuadrada de salida del discriminador
         d_acc_total_train = []
         d_loss_total_train = []
