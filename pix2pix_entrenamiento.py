@@ -72,7 +72,7 @@ class Pix2PixEntrenamiento():
                 self.graficar_accuracy_y_perdida( d_acc_total_train, d_loss_total_train, d_acc_total_val,d_loss_total_val, (i+1))
                 file = open('acc.txt', 'w')
                 for acc in d_acc_total_val:
-                    file.writelines([acc])
+                    file.writelines(str([acc]))
                 file.close()
                 d_acc_sum_train.clear()
                 d_loss_sum_train.clear()
